@@ -6,3 +6,7 @@
   `defaults write com.apple.Dock autohide-delay -float 0 && killall Dock`
   ### 恢复 Dock 默认隐藏恢复速度
   `defaults delete com.apple.Dock autohide-delay && killall Dock`
+
+
+
+## Windows
