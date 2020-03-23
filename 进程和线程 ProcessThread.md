@@ -182,3 +182,12 @@ __数据段__: 运行过程中所产生的数据们
 五状态的基础上加入`就绪挂起`和`阻塞挂起`两种状态.
 
 ![image-20200322214412628](/Users/jerry/Library/Application Support/typora-user-images/image-20200322214412628.png)
+
+---
+
+#### 进程调度
+
+
+
+##### 进程调度的时机
+
