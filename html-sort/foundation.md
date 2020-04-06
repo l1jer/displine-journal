@@ -8,3 +8,20 @@
 '{{-- --}}' -> 后台注释
 ```
 
+```html
+<form>
+  <fieldset>
+  	<legend>xxx</legend>
+  	<input type="file" name="image[]" accept="image/png" multiple>
+    <!-- 'image[]'提交上传多个文件到数组, 
+		'accept'限定上传格式,
+		'multiple'允许多个上传 -->
+	</fieldset>
+	<button type="submit">Submit</button>
+</form>
+```
+
+```html
+
+```
+
