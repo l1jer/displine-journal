@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS - Practice</title>
+</head>
+
+<body>
+    <div>baidu.com</div>
+    <div>google.com</div>
+    <style>
+        .hide
+        {
+        display: none;
+        }
+    </style>
+</body>
+
+
+<script>
+
+    "use strict"
+    const div = document.querySelectorAll('div');
+    //利用 DOM 节点来调取元素
+    // 1
+    Array.from(div).map(function (item) {
+        console.log(item);
+    });
+
+    // 2
+    Array.prototype.map.call(div, function (item) {
+        console.log(item);
+    });
+
+    // 3
+    console.log([...div]);
+
+
+    [...div].map(function (item) {
+        item.addEventListener('click', function () {
+            this.classList.toggle('hide');
+        });
+    });
+</script>
+
+</html>

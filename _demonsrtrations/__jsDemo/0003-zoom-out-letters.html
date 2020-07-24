@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JS - Practice</title>
+
+</head>
+
+<body>
+    <input type="text" name="password">
+    <span></span>
+</body>
+
+
+<script>
+    "use strict"
+    // -----逐渐变大的字母-----
+    let hd ='BAIDU';
+    for (let i =0;i<hd.length;i++){
+        let span = document.createElement("span");
+        span.style.fontSize = (i+1) *50 + "px";
+        span.innerHTML =hd[i];
+        document.body.append(span);
+    }
+    
+</script>
+
+</html>

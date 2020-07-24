@@ -1,0 +1,68 @@
+body{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.9);
+}
+
+.emboss-txt{
+	position: relative;
+	font-size: 120px;
+	font-family: "Impact", cursive;
+	letter-spacing: 5px;
+	color:rgb(207,207,207);
+
+	/* 3D layers*/
+	text-shadow:
+	0 0 1px rgb(167,167,167),
+	0 1px 1px rgb(167,167,167),
+	0 2px 1px rgb(167,167,167),
+
+	1px 1px 1px rgb(167,167,167),
+	1px 2px 1px rgb(167,167,167),
+	1px 3px 1px rgb(167,167,167),
+
+	2px 2px 1px rgb(167,167,167),
+	2px 3px 1px rgb(167,167,167),
+	2px 4px 1px rgb(167,167,167),
+
+	/* Long soft bottom */
+	1px 10px 30px rgba(0,0,0,0.8),
+	1px 10px 70px rgba(0,0,0,0.8),
+
+	/* Short soft bottom */
+	0 5px 5px rgba(0,0,0,0.8),
+
+	/*Left shadow*/
+	-5px 5px 20px rgba(0,0,0,0.8),
+
+	/*Right shadow*/
+	5px 5px 20px rgba(0,0,0,0.8),
+
+	/* White light*/
+	1px 1px 120px rgba(255,255,255,0.5);
+}
+.emboss-txt::after{
+	content: 'Light is shine while darkness is hidden.';
+	font-size: 120px;
+	letter-spacing: 5px;
+	font-family: "Impact", cursive;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	text-shadow:0 0 100px rgba(11,124,199,0.5);
+	animation: cycle 10s linear infinite;
+}
+
+@keyframes cycle {
+	0% {text-shadow: 0 0 100px rgba(11,124,199,0.5);}
+	20% {text-shadow: 0 0 100px rgba(199, 0, 50, 0.5);}
+	40% {text-shadow: 0 0 100px rgba(199, 199, 0, 0.5);}
+	60% {text-shadow: 0 0 100px rgba(11, 199, 0, 0.5);}
+	80% {text-shadow: 0 0 100px rgba(199, 0, 186, 0.5);}
+}

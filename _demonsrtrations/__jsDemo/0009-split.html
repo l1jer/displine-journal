@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JS - Practice</title>
+</head>
+
+<body>
+    <input type="text" name="password">
+    <span></span>
+</body>
+
+
+<script>
+    "use strict"
+    // split 拆分数组
+    let str = 'cmd, terminal';
+    let str1 = str.split(',');
+    console.table(str1);
+    console.log(str1.join('-'));
+
+    // concat & '...语法' 数组合并
+    let arr = ['abc','def'];
+    let arr1 =[1,2,3,4];
+    // 原始方法 arr = arr.concat(arr1);
+    arr = [...arr, ...arr1]; /// 点儿语法展开更清晰
+    console.log(arr);
+
+    // copyWithin 复制并替换
+    
+</script>
+
+</html>
