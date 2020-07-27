@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    // keys -> index
+    let arr = ["cmd", "terminal"];
+    let values = arr.values();
+    while (({ value, done } = values.next()) && done == false) {
+      console.log(value);
+      // cmd
+      // terminal
+    }
+    let entries = arr.entries(); // entries 迭代对象
+    // let { done, value } = entries.next();  // false, [0,1]
+    let {
+      done,
+      value: [a, b]
+    } = entries.next();  
+
+    /*
+        let keys = arr.values();  // 这里的 values得到值, 换成keys得到序列
+        let { value, done } = keys.next();
+        console.log(value, done);  // cmd false
+        */
+
+    /*
+        console.log(keys.next());  // 0 false
+        console.log(keys.next());  // 1 false
+        console.log(keys.next());  // undefined true
+        */
+  </script>
+</html>

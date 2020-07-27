@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btnNum div {
+  float: left;
+  padding: 5px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+p,
+table,
+td,
+tr,
+ul,
+ol,
+li,
+a {
+  margin: 5px 0 0 0;
+  padding: 0;
+  font-size: 12px;
+}
+h5 {
+  margin: 0px 0 0 0 !important;
+  padding: 5px 10px !important;
+  font-size: 12px;
+}
+
+#button {
+  float: right;
+}
+
+#clock {
+  float: right;
+  position: absolute;
+  bottom: 1%;
+  right: 5%;
+}

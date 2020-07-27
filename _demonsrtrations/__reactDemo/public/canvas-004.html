@@ -1,0 +1,93 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>二/三次贝塞尔曲线, PathD</title>
+    <script type="application/javascript">
+      function draw() {
+        var canvas = document.getElementById("cvs");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          /*
+          quadraticCurveTo(cp1x, cp1y, x, y) 
+          绘制二次贝塞尔曲线
+          - cp1x,cp1y为一个控制点
+          - x,y为结束点
+
+          bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
+          绘制三次贝塞尔曲线
+          - cp1x, cp1y 控制点1
+          - cp2x, cp2y 控制点2
+          - x, y 结束点
+          */
+
+          /* -- 二次贝塞尔曲线 -- */
+          ctx.beginPath();
+          ctx.moveTo(75, 25);
+          ctx.quadraticCurveTo(25, 25, 25, 62.5);
+          ctx.quadraticCurveTo(25, 100, 50, 100);
+          ctx.quadraticCurveTo(50, 120, 30, 125);
+          ctx.quadraticCurveTo(60, 120, 65, 100);
+          ctx.quadraticCurveTo(125, 100, 125, 62.5);
+          ctx.quadraticCurveTo(125, 25, 75, 25);
+          ctx.stroke();
+
+          /* -- 三次贝塞尔曲线 -- */
+          ctx.beginPath();
+          ctx.moveTo(175, 130);
+          ctx.bezierCurveTo(180, 150, 170, 125, 150, 125);
+          ctx.bezierCurveTo(120, 125, 120, 162.5, 120, 162.5);
+          ctx.bezierCurveTo(120, 180, 140, 202, 175, 220);
+          ctx.bezierCurveTo(210, 202, 230, 180, 230, 162.5);
+          ctx.bezierCurveTo(230, 162.5, 230, 125, 200, 125);
+          ctx.bezierCurveTo(190, 125, 175, 137, 175, 140);
+          ctx.fillStyle = "pink";
+          ctx.fill();
+
+          // --- Path2D --
+          /*
+          Path2D() 会返回一个新初始化的 Path2D 对象.
+          可能将某一路径作为变量--创建一个它的副本, 
+          或者将一个包含 SVG path 数据的字符串作为变量
+          */
+
+          /*
+          new Path2D(); // 空 Path 对象
+          new Path2D(path); // 克隆 Path 对象
+          new Path2D(d); // 从SVG建立path对象
+          */
+
+          // 比如 moveTo, rect, arc或quatraticCurveTo等都可以在 Path2D 中使用
+          // 而Path2D API中添加了 addPath 作为将 path 结合起来的方法.
+          // 比如 Path2D.addPath(path [, tranform]) 添加了一条路径到当前路径(可能添加了一个变换矩阵)
+          // 这种东西就像写好一个函数去调用一样
+          var rectangle = new Path2D();
+          rectangle.rect(300, 50, 50, 50);
+
+          var circle = new Path2D();
+          circle.moveTo(125, 135);
+          circle.arc(300, 235, 25, 0, 2 * Math.PI);
+
+          ctx.stroke(rectangle);
+          ctx.fillStyle = "#ababab";
+          ctx.fill(circle);
+
+          /* -- SVG paths -- */
+          //
+          //  var p = new Path2D("M10 10 h 80 v 80 h -80 z")
+          //
+        }
+      }
+    </script>
+  </head>
+  <body onload="draw();">
+    <canvas
+      id="cvs"
+      width="500"
+      height="500"
+      style="border: 1px solid #aaa; display: block; margin: 50px auto;"
+    ></canvas>
+  </body>
+</html>

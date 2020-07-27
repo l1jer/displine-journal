@@ -1,0 +1,159 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      dl {
+        display: block;
+      }
+      dt {
+        text-align: center;
+        float: left;
+        width: 100%;
+        height: auto;
+        background-color: darkgoldenrod;
+      }
+      dd {
+        text-align: center;
+        margin: 0;
+        padding: 200px 0 0 0;
+        float: left;
+        width: 100%;
+        height: 300px;
+        background-color: #e0e0e0;
+      }
+    </style>
+    <button>莫名按钮</button>
+    <button>好家伙!</button>
+
+    <dl>
+      <dt>menu</dt>
+      <dd>1</dd>
+      <dt>submenu</dt>
+      <dd hidden="hidden">2</dd>
+    </dl>
+  </body>
+
+  <script>
+    // call(), apply() & bind() 都是为了改变 this 指针而存在, 有些细微差别
+    // this 的构造原理:
+    function user(name) {
+      // This is a 构造函数 (the Function constructor)
+      this.name = name; // 这里的this时空的{}, 可以被改变
+      // return {a:'tom'}; // 此时此处会直接代替jerry变量中的值
+    }
+    let jerry = new user("jerry"); // 在user函数中生成 {name:'jerry'},
+    console.log(jerry);
+
+    let john = { 中文: "约翰" }; // 此时jerry即jerry
+
+    user.call(john, "john"); // 传入到user函数的name变量里, 此时this => john对象
+    console.log(john);
+
+    // Call() & Apply()
+    // 区别在于传递参数的方式
+    let amy = {
+      name: "Amy",
+    };
+    let emily = {
+      name: "Emily",
+    };
+    function user(birthyear, gender) {
+      console.log(birthyear + gender + this.name);
+    }
+    user.call(amy, "1990年生,", "性别女,");
+    user.apply(amy, ["1990年生,", "性别女,"]);
+    // 首位参数为对象
+    // call中第二位参数依次传入函数参数
+    // apply中的数组元素依次传入函数参数
+    /*  1. 两者传递到函数内得到this指针;
+            2. 均立即执行, 不需要其他附加指令.
+        */
+
+    // call/apply传参自体验
+    function show() {
+      alert(this.innerHTML);
+    }
+    let buttons = document.querySelectorAll("button");
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", (event) => {
+        show.call(event.target);
+        // 这里没有参数, 换成apply是一样的
+      });
+    }
+
+    // 数组传参来理解两者区别
+    let arr = [1, 2, 3, 4, 5];
+    console.log(Math.max(...arr)); // 展开语法获得元素
+    console.log(Math.max.apply(Math, arr)); // 在这里就只能使用apply()而非call()
+
+    // 构造函数方法继承
+    // 使代码变成可复用
+    function request() {
+      // 善用代码复用
+      this.get = function (params) {
+        let str = Object.keys(params)
+          .map((k) => `${k}=${params[k]}`)
+          .join("&");
+        let url = `http://news.sina.com/${this.url}/${str}`;
+        console.log(url);
+      };
+    }
+
+    // 请求文章列表
+    function article() {
+      this.url = "article/lists";
+      request.call(this);
+      //   this.get = function (params) {
+      //     console.log(Object.keys(params));
+      //     let str = Object.keys(params)
+      //       .map((k) => `${k}=${params[k]}`)
+      //       .join("&");
+      //     console.log(`http://news.sina.com/${this.url}/${str}`);
+      //   };
+    }
+    let a = new article();
+    console.log(a.get({ id: 1, cat: "js" }));
+
+    // 请求用户列表
+    function players() {
+      this.url = "players/lists";
+      request.call(this);
+      //   this.get = function (params) {
+      //     console.log(Object.keys(params));
+      //     let str = Object.keys(params)
+      //       .map((k) => `${k}=${params[k]}`)
+      //       .join("&");
+      //     console.log(`http://news.sina.com/${this.url}/${str}`);
+      //   };
+    }
+    let player = new players();
+    player.get({ id: 2, role: "admin" });
+
+    // 开发面板
+    // 一般方法:
+    // document.querySelectorAll("dt").forEach((dt, i) => {
+    //   dt.addEventListener("click", () => {
+    //     let dds = document.querySelectorAll("dd");
+    //     dds.forEach((dd) => dd.setAttribute("hidden", "hidden"));
+    //     dds[i].removeAttribute("hidden");
+    //     panel.call(null, i);
+    //   });
+    // });
+
+    // call()方法:
+    document.querySelectorAll("dt").forEach((dt, i) => {
+      dt.addEventListener("click", () => panel.call(null, i));
+      // 没有用到this便传递空集null, 否则报错
+    });
+    function panel(i){
+      let dds = document.querySelectorAll("dd");
+        dds.forEach((dd) => dd.setAttribute("hidden", "hidden"));
+        dds[i].removeAttribute("hidden");
+    }
+  </script>
+</html>

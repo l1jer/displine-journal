@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="bt">aaa</button>
+  </body>
+
+  <script>
+    // addEventlistener('click',function()) -> 可以理解为一个函数
+    // 而其中的 function() 则是 回调函数
+    document.getElementById("bt").addEventListener("click", function () {
+      alert(this.innerHTML);
+    });
+
+    let cmd = [1, 2, 3, 4];
+    cmd.map(function (value, index, array) {
+      array[index] += 10; //根据索引来进行改变
+      // return value;  这里赋值与否都是一样
+    });
+    console.table(cmd);
+
+    // 展开语法 购物车实例
+    function sum(discount = 0, ...price) {
+      // 展开语法放在后面, 否则报语法错误
+      // console.log(price);
+      let total = price.reduce((a, b) => a + b); // 得到总价
+      return Math.round(total * (discount / 10));
+    }
+    console.log(sum(9, 50, 100, 20));
+  </script>
+</html>
