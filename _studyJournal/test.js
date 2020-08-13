@@ -1,3 +1,5 @@
-let add = (x, y) => x + y;
-let rst = add.bind(null, l);
-rst(2);
+function C() {
+  this.a = "a";
+}
+let A = new C();
+console.log(A.a);
