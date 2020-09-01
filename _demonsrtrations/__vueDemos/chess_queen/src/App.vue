@@ -1,20 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-  <div>Chess Queen</div>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <eight-queen />
+    <hello-world />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
+import EightQueen from "./components/EightQueen";
+import HelloWorld from "./components/HelloWorld.vue";
 
-}
+export default {
+  name: "App",
+  components: {
+    EightQueen,
+    HelloWorld,
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-·;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
