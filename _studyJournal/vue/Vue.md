@@ -1,3 +1,19 @@
+<!--
+ *  ┌─────────────────────────────────────────────────────────────┐
+ *  │┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐│
+ *  ││Esc│!1 │@2 │#3 │$4 │%5 │^6 │&7 │*8 │(9 │)0 │_- │+= │|\ │`~ ││
+ *  │├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤│
+ *  ││ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │{[ │}] │ BS  ││
+ *  │├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤│
+ *  ││ Ctrl │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│" '│ Enter  ││
+ *  │├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┤│
+ *  ││ Shift  │ Z │ X │ C │ V │ B │ N │ M │< ,│> .│? /│Shift │Fn ││
+ *  │└─────┬──┴┬──┴──┬┴───┴───┴───┴───┴───┴──┬┴───┴┬──┴┬─────┴───┘│
+ *  │      │Fn │ Alt │         Space         │ Alt │Win│   HHKB   │
+ *  │      └───┴─────┴───────────────────────┴─────┴───┘          │
+ *  └─────────────────────────────────────────────────────────────┘
+ -->
+
 # Vue
 
 - [Vue](#vue)
@@ -26,6 +42,16 @@
   - [自定义指令](#自定义指令)
     - [钩子函数参数](#钩子函数参数)
     - [实际操作](#实际操作)
+  - [双向绑定](#双向绑定-1)
+    - [v-model](#v-model)
+  - [组件设计](#组件设计)
+    - [v-slot](#v-slot)
+    - [组件跨层级访问](#组件跨层级访问)
+    - [依赖注入](#依赖注入)
+    - [组件封装 x 二次封装](#组件封装-x-二次封装)
+  - [插件](#插件)
+    - [Mixins](#mixins)
+    - [Vue.use](#vueuse)
 
 ## Vue CLI
 
@@ -491,3 +517,94 @@ function(
 ```
 
 ### 实际操作
+
+EightQueen.vue
+
+## 双向绑定
+
+### v-model
+
+在表单元素`<input>`, `<textarea>`, `<select>`上创建双向数据的语法糖.
+
+> .sync 修饰符的双向绑定
+>
+> 1. v-bind: msg
+> 2. v-on: update:msg
+
+- `<select>`元素使用 `value` 属性和 `change` 事件
+
+- `<input>` 和 `<textarea>`使用 `value` 属性和 `input` 事件
+
+```js
+<input v-model.lazy='msg'>
+// 在 change 时, 而非 input 时更新
+```
+
+- `<input type='checkbox'/>` 和 `<input type='radio'/>` 使用 checked 属性和 change 事件
+
+见 [[ DoubleBinding.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/DoubleBinding.vue)
+
+## 组件设计
+
+### v-slot
+
+`v-slot = #default`
+
+见 [[ WhileLoading.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/WhileLoading.vue) 和 [[ WelcomeContent.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/WelcomeContent.vue)
+
+### 组件跨层级访问
+
+使用 emit 通过父组件对子组件进行修改
+
+```js
+this.$root.pri; // 获取 根组件 的数据
+this.$root.pri = 2; // 写入 根组件 的数据
+this.$root.sm; // 访问 根组件 的计算属性
+this.$root.prism(); // 调用 根组件的方法
+
+this.$parent.pri; // 获取 父组件 的数据
+this.$parent.pri = 2; // 写入 父组件 的数据
+this.$parent.sm; // 访问 父组件 的计算属性
+this.$parent.prism(); // 调用 父组件 的方法
+
+// $parent 和 $root 必须搭配使用
+```
+
+`<base-input ref='usernameInput'></base-input>`
+
+`this.$ref.usernameInput.focus();`
+
+`$ref`只能在 mounted 生命周期钩子函数被调用之后才能使用;
+
+`$parent` 和 `$root` 在各个生命周期钩子函数中都可以使用
+
+### 依赖注入
+
+声明了当前组件以来的父组件们的外部 props 有哪些.
+
+pros:
+
+- 祖先组件不需要知道哪些后代组件使用它提供的的属性
+- 后代组件不需要知道被注入的属性来自哪里
+
+cons:
+
+- 组件间的耦合较为紧密, 不宜重构
+- 提供的属性是非响应式
+
+### 组件封装 x 二次封装
+
+见 [[ CompCommunication.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/CompCommunication.vue) 和 [[ DetailCommunication.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/DetailCommunication.vue)
+
+## 插件
+
+### Mixins
+
+函数复用, 被一个子类或一组子类继承功能的类.
+
+全局注册的 Vue.mixin 会影响所有创建的 Vue 实例
+
+- 同名钩子函数将合并为一个数组, 混入对象的钩子将在组件自身钩子之前调用
+- 二者的 methods, components 和 directives, 将被合并为同一个对象, 若对象键名冲突时, 取组件对象的键值对.
+
+### Vue.use
