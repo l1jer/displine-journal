@@ -38,12 +38,12 @@ export default {
   },
   // 计算属性
   // computed: {
-  //   count() {
-  //     return this.classmates.reduce((p, c) => {
-  //       p = p + c.count;
-  //       return p;
-  //     }, 0);
-  //   },
+  // count() {
+  //   return this.classmates.reduce((p, c) => {
+  //     p = p + c.count;
+  //     return p;
+  //   }, 0);
+  // },
   // },
   methods: {
     count() {
