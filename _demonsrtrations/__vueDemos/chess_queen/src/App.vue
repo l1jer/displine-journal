@@ -3,32 +3,21 @@
 		<img alt="Vue logo" src="./assets/logo.png" />
 		<eight-queen />
 		<hello-world />
-		<div v-resize:[direction].quiet="onResize">
-			Window height is: {{ length }}
-		</div>
+		<double-binding />
 	</div>
 </template>
 
 <script>
 import EightQueen from './components/EightQueen';
 import HelloWorld from './components/HelloWorld.vue';
+import DoubleBinding from './components/DoubleBinding';
 
 export default {
-	data() {
-		return {
-			direction: 'vertical',
-			length: 0,
-		};
-	},
-	methods: {
-		onResize(length) {
-			this.length = length;
-		},
-	},
 	name: 'App',
 	components: {
 		EightQueen,
 		HelloWorld,
+		DoubleBinding,
 	},
 };
 </script>
@@ -41,5 +30,17 @@ export default {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
+}
+.wb {
+	padding: 1em;
+	border-top: solid 5px #000;
+}
+.wb-200 {
+	width: 200px;
+	margin: 0 auto;
+}
+div {
+	width: 450px;
+	margin: 0 auto;
 }
 </style>

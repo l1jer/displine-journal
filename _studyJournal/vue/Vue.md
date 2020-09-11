@@ -26,6 +26,8 @@
   - [自定义指令](#自定义指令)
     - [钩子函数参数](#钩子函数参数)
     - [实际操作](#实际操作)
+  - [双向绑定](#双向绑定-1)
+    - [v-model](#v-model)
 
 ## Vue CLI
 
@@ -491,3 +493,29 @@ function(
 ```
 
 ### 实际操作
+
+EightQueen.vue
+
+## 双向绑定
+
+### v-model
+
+在表单元素`<input>`, `<textarea>`, `<select>`上创建双向数据的语法糖.
+
+> .sync 修饰符的双向绑定
+>
+> 1. v-bind: msg
+> 2. v-on: update:msg
+
+- `<select>`元素使用 `value` 属性和 `change` 事件
+
+- `<input>` 和 `<textarea>`使用 `value` 属性和 `input` 事件
+
+```js
+<input v-model.lazy='msg'>
+// 在 change 时, 而非 input 时更新
+```
+
+- `<input type='checkbox'/>` 和 `<input type='radio'/>` 使用 checked 属性和 change 事件
+
+见 [[ DoubleBinding.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/DoubleBinding.vue)
