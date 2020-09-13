@@ -1,9 +1,13 @@
 <template>
 	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png" />
-		<eight-queen />
-		<hello-world />
-		<double-binding />
+		<div>
+			<eight-queen />
+		</div>
+		<div>
+			<hello-world />
+			<double-binding />
+			<validate-input :rules="rules" />
+		</div>
 	</div>
 </template>
 
@@ -11,13 +15,29 @@
 import EightQueen from './components/EightQueen';
 import HelloWorld from './components/HelloWorld.vue';
 import DoubleBinding from './components/DoubleBinding';
+import CustomInput from './components/CustomInput';
+import ValidateHoc from './components/hoc.js';
+const ValidateInput = ValidateHoc(CustomInput);
 
 export default {
 	name: 'App',
+	data() {
+		return {
+			rules: [
+				{
+					test: function(value) {
+						return /\d+/.test(value);
+					},
+					message: '请输入一个数字',
+				},
+			],
+		};
+	},
 	components: {
 		EightQueen,
 		HelloWorld,
 		DoubleBinding,
+		ValidateInput,
 	},
 };
 </script>
@@ -31,16 +51,16 @@ export default {
 	color: #2c3e50;
 	margin-top: 60px;
 }
-.wb {
+#app:nth-child(n) {
+	float: left;
+	display: flex;
 	padding: 1em;
+	/* border-top: solid 5px #000; */
+	width: 300px;
+}
+#app:nth-child(n) > :first-child {
+	/* width: 250px; */
+	/* padding: em; */
 	border-top: solid 5px #000;
-}
-.wb-200 {
-	width: 200px;
-	margin: 0 auto;
-}
-div {
-	width: 450px;
-	margin: 0 auto;
 }
 </style>
