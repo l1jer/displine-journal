@@ -551,7 +551,6 @@ EightQueen.vue
 - `<input type='checkbox'/>` 和 `<input type='radio'/>` 使用 checked 属性和 change 事件
 
 见 [[ DoubleBinding.vue ]](_demonsrtrations/__vueDemos/chess_queen/src/components/DoubleBinding.vue)
-<<<<<<< HEAD
 
 ## 组件设计
 
@@ -617,7 +616,3 @@ cons:
 - 二者的 methods, components 和 directives, 将被合并为同一个对象, 若对象键名冲突时, 取组件对象的键值对.
 
 ### Vue.use
-
-=======
-
-> > > > > > > 6fd3b1e227ba8197ec1a440a585275037421c577
