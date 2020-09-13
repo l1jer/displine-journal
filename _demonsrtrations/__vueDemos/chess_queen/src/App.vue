@@ -6,7 +6,10 @@
 		<div>
 			<hello-world />
 			<double-binding />
-			<validate-input :rules="rules" />
+		</div>
+		<div>
+			<hoc-custome-input />
+			<renderless-input />
 		</div>
 	</div>
 </template>
@@ -15,29 +18,17 @@
 import EightQueen from './components/EightQueen';
 import HelloWorld from './components/HelloWorld.vue';
 import DoubleBinding from './components/DoubleBinding';
-import CustomInput from './components/CustomInput';
-import ValidateHoc from './components/hoc.js';
-const ValidateInput = ValidateHoc(CustomInput);
+import HocCustomeInput from './components/HocCustomeInput';
+import RenderlessInput from './components/RenderlessInput';
 
 export default {
 	name: 'App',
-	data() {
-		return {
-			rules: [
-				{
-					test: function(value) {
-						return /\d+/.test(value);
-					},
-					message: '请输入一个数字',
-				},
-			],
-		};
-	},
 	components: {
 		EightQueen,
 		HelloWorld,
 		DoubleBinding,
-		ValidateInput,
+		HocCustomeInput,
+		RenderlessInput,
 	},
 };
 </script>
@@ -56,11 +47,18 @@ export default {
 	display: flex;
 	padding: 1em;
 	/* border-top: solid 5px #000; */
-	width: 300px;
+	/* width: 200px; */
 }
-#app:nth-child(n) > :first-child {
-	/* width: 250px; */
-	/* padding: em; */
-	border-top: solid 5px #000;
+#app > div:nth-child(2n) > :nth-child(n) {
+	width: 200px;
+	margin: 1em;
+	padding: 1em;
+	border: solid 2px #000;
+}
+#app > div:nth-child(3n) > :nth-child(n) {
+	width: 200px;
+	margin: 1em;
+	padding: 1em;
+	border: solid 2px #000;
 }
 </style>
