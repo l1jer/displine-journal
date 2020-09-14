@@ -1,23 +1,23 @@
-{
-    "env": {
-        "browser": true,
-        "es2020": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        // "plugin:prettier/recommended",
-        "airbnb"
-        // "prettier" // 需要放在最后确保覆盖, 放置和 prettier 冲突
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 11,
-        "sourceType": "module"
-    },
-    "plugins": ["react"],
-    "rules": {
-        // "prettier/prettier": "error" // 可选, 使prettier推荐格式问题的配置以ESLint rules的方式写入, 这样就在ESLint输出结果中得到所有问题.
-    }
-}
+// {
+//     "env": {
+//         "browser": true,
+//         "es2020": true
+//     },
+//     "extends": [
+//         "plugin:react/recommended",
+//         // "plugin:prettier/recommended",
+//         "airbnb"
+//         // "prettier" // 需要放在最后确保覆盖, 放置和 prettier 冲突
+//     ],
+//     "parserOptions": {
+//         "ecmaFeatures": {
+//             "jsx": true
+//         },
+//         "ecmaVersion": 11,
+//         "sourceType": "module"
+//     },
+//     "plugins": ["react"],
+//     "rules": {
+//         // "prettier/prettier": "error" // 可选, 使prettier推荐格式问题的配置以ESLint rules的方式写入, 这样就在ESLint输出结果中得到所有问题.
+//     }
+// }

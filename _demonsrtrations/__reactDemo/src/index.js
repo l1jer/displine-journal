@@ -1,36 +1,31 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import Form from "./Form";
-import FormMul from "./FormMul";
-import Counter from "./redux-counter";
-import Calculator from "./BoilingVerdict";
-import Calculatorr from "./reBoilingVerdict";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import Form from './Form';
+import FormMul from './FormMul';
+import Counter from './redux-counter';
+import Calculator from './BoilingVerdict';
+import Calculatorr from './reBoilingVerdict';
 
 // -- Default package --
 ReactDOM.render(
-  <React.StrictMode>
-    <Form />
-    <FormMul />
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Form />
+		<FormMul />
+		<App />
+	</React.StrictMode>,
+	document.getElementById('root')
 );
-
-// unregister()
-// register() -> faster
-serviceWorker.register();
 
 // Set Current Time
 function tick() {
-  const element = (
-    <div>
-      <h3>告诉你们几个小伙, 现在是 {new Date().toLocaleTimeString()}.</h3>
-    </div>
-  );
-  ReactDOM.render(element, document.getElementById("time"));
+	const element = (
+		<div>
+			<h3>告诉你们几个小伙, 现在是 {new Date().toLocaleTimeString()}.</h3>
+		</div>
+	);
+	ReactDOM.render(element, document.getElementById('time'));
 }
 setInterval(tick, 1000);
 

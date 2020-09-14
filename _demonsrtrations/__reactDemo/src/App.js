@@ -1,24 +1,15 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          <code>create-react-app</code>的主页颜色搭配真好看.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<header className='App-header'>
+				<p>
+					<code>create-react-app</code>的主页颜色搭配真好看.
+				</p>
+			</header>
+		</div>
+	);
 }
 
 export default App;
