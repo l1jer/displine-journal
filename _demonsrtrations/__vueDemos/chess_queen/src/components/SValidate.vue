@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2020-09-14 01:02:58
- * @LastEditTime: 2020-09-14 01:03:04
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: /Self_Displine/_demonsrtrations/__vueDemos/chess_queen/src/components/SValidate.vue
--->
 <template>
 	<div>
 		<slot :validate="validate"></slot>
