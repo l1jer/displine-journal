@@ -1,1 +1,0 @@
-##### Self-displine is for both fitness and coding.

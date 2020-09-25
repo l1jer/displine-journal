@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import Form from './Form';
 import FormMul from './FormMul';
@@ -8,13 +7,18 @@ import Counter from './redux-counter';
 import Calculator from './BoilingVerdict';
 import Calculatorr from './reBoilingVerdict';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+
 // -- Default package --
 ReactDOM.render(
-	<React.StrictMode>
-		<Form />
-		<FormMul />
-		<App />
-	</React.StrictMode>,
+	<>
+		<div class='container'>
+			<Form />
+			<FormMul />
+			<App />
+		</div>
+	</>,
 	document.getElementById('root')
 );
 
