@@ -18,6 +18,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js/,
+        type: "javascript/auto",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
@@ -33,12 +40,10 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "chat",
+      name: "starter",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {
-        "./Chat": "./src/Chat",
-      },
+      exposes: {},
       shared: {
         ...deps,
         react: {
