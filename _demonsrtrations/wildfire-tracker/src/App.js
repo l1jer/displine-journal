@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Map from './components/Map';
 import Loading from './components/Loading';
+import Header from './components/Header';
 
 function App() {
 	const [eventData, setEventData] = useState([]);
@@ -11,9 +12,7 @@ function App() {
 		const fetchEvents = async () => {
 			setLoading(true);
 			// Start loading = start fetching
-			const res = await fetch(
-				'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events'
-			);
+			const res = await fetch('https://eonet.sci.gsfc.nasa.gov/api/v3/events');
 			// Fetching data till completed -> res
 			const { events } = await res.json();
 			// Jsonfy data from res to events
@@ -29,7 +28,12 @@ function App() {
 		console.log(eventData);
 	}, []);
 
-	return <div>{!loading ? <Map eventData={eventData} /> : <Loading />}</div>;
+	return (
+		<div>
+			{!loading ? <Map eventData={eventData} /> : <Loading />}
+			<Header />
+		</div>
+	);
 }
 
 export default App;

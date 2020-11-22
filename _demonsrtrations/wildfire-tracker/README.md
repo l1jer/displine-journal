@@ -3,7 +3,7 @@
 ## What's in there:
 
 - Create React App
-- Fetch / NASA API
+- Fetch / [NASA API v3](https://eonet.sci.gsfc.nasa.gov/api/v3/events)
 - Iconify
 
 ## What func. does it have?
@@ -15,3 +15,5 @@
 ## To start with:
 
 `npm start`
+
+Tutorial by Traversy Media [[Link]](https://www.youtube.com/watch?v=ontX4zfVqK8&t=728s&ab_channel=TraversyMedia])
