@@ -1,18 +1,18 @@
-# Wildfire Tracker
+## Wildfire Tracker
 
-## What's in there:
+### What's in there:
 
 - Create React App
 - Fetch / [NASA API v3](https://eonet.sci.gsfc.nasa.gov/api/v3/events)
 - Iconify
 
-## What func. does it have?
+### What func. does it have?
 
 - A google map!
 - **Display** locations where has fire with an alert icon
 - More information by **click** on each fire
 
-## To start with:
+### To start with:
 
 `npm start`
 
