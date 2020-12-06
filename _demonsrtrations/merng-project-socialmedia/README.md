@@ -7,9 +7,6 @@ Simply submit single post contains publisher, title, dialog, tags and photos on 
 - MongoDB / Atlas
 - Express
 - React
-  - redux
-  - router
-  - ...
 - Node.js
 - GraphQL / Apollo
 - Semantic UI

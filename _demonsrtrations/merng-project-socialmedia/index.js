@@ -10,6 +10,9 @@ const { MONGODB } = require('./config');
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	context: ({ req }) => ({ req }),
+	// Forward request body to the context
+	// It enables to access the req body in the context
 });
 
 mongoose
