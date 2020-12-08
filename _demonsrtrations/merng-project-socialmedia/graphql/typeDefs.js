@@ -8,6 +8,8 @@ module.exports = gql`
 		username: String!
 		comments: [Comment]!
 		likes: [Like]!
+		likeCount: Int!
+		commentCount: Int!
 	}
 	type Comment {
 		id: ID!
@@ -38,7 +40,6 @@ module.exports = gql`
 	type Query {
 		getPosts: [Post]
 		getPost(postId: ID!): Post
-		# what???
 		# Any query can be claim ONLY once.
 	}
 	type Mutation {
@@ -49,5 +50,8 @@ module.exports = gql`
 		createComment(postId: String!, body: String!): Post!
 		deleteComment(postId: String!, commentId: ID!): Post!
 		likePost(postId: ID!): Post!
+	}
+	type Subscription {
+		newPost: Post!
 	}
 `;

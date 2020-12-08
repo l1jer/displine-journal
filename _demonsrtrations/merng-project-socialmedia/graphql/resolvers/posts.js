@@ -27,10 +27,11 @@ module.exports = {
 				throw new Error(err);
 			}
 		},
-	},
+	}, // Query ends
 	// Here can be done wrong easily, do NOT put Mutation in Query
+
 	Mutation: {
-		// --- --- Creation --- ---
+		// --- --- createPost --- ---
 		async createPost(_, { body }, context) {
 			// Here is the context body been accessed via index.js where forward req body to context
 
@@ -47,8 +48,10 @@ module.exports = {
 
 			const post = await newPost.save();
 
+			context.pubsub.publish('NEW_POST', { newPost: post });
+
 			return post;
-		},
+		}, // createPost ends
 
 		// --- --- Deletion --- ---
 		async deletePost(_, { postId }, context) {
@@ -67,7 +70,7 @@ module.exports = {
 			} catch (err) {
 				throw new Error(err);
 			}
-		},
+		}, // deletePost ends
 
 		async likePost(_, { postId }, context) {
 			const { username } = checkAuth(context);
@@ -88,6 +91,11 @@ module.exports = {
 				await post.save();
 				return post;
 			} else throw new UserInputError('Post was not found');
+		}, // likePost Ends
+	}, // Mutation Ends
+	Subscription: {
+		newPost: {
+			subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'), // ??
 		},
-	},
+	}, // subscription ends
 };
