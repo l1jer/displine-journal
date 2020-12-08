@@ -72,6 +72,7 @@ module.exports = {
 			}
 		}, // deletePost ends
 
+		// --- --- Like Function --- ---
 		async likePost(_, { postId }, context) {
 			const { username } = checkAuth(context);
 
@@ -93,6 +94,7 @@ module.exports = {
 			} else throw new UserInputError('Post was not found');
 		}, // likePost Ends
 	}, // Mutation Ends
+
 	Subscription: {
 		newPost: {
 			subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'), // ??
