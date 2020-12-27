@@ -4,16 +4,19 @@ Simply submit single post contains publisher, title, dialog, tags and photos on 
 
 #### Server components/libraries
 
-- MongoDB / Atlas
-- Express
-- Node.js
-- GraphQL / Apollo
+- MongoDB @5.10 /Atlas
+- Node Express
+- GraphQL @15.4 
+- Apollo @2.19
 
 #### Client components/libraries
 
-- React
-- Semantic UI
-- GraphQL / Apollo
+- React @16.14
+- Semantic UI React @2.0
+- Semantic UI CSS @2.4
+- GraphQL @15.4 
+- jwt-decode @3.1.2",
+
 
 ### How to start it?
 
