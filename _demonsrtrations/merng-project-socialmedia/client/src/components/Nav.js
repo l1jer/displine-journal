@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Menu, Segment, Button, Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../context/auth';
+
 function Nav() {
+	const { user, logout } = useContext(AuthContext);
 	const pathname = window.location.pathname;
 	// // ./Login
 	// This bunch of lines indicates when you input path in the browser,
@@ -12,7 +15,26 @@ function Nav() {
 
 	const handleItemClick = (e, { name }) => setActiveItem(name);
 
-	return (
+	const nav = user ? (
+		<Segment inverted size='big'>
+			<Menu inverted pointing secondary>
+				<Menu.Item name={user.username} active as={Link} to='/' />
+
+				<Menu.Menu position='right'>
+					<Dropdown item text='Language'>
+						<Dropdown.Menu>
+							<Dropdown.Item>English</Dropdown.Item>
+							<Dropdown.Item>Chinese</Dropdown.Item>
+							<Dropdown.Item>Spanish</Dropdown.Item>
+						</Dropdown.Menu>
+					</Dropdown>
+					<Menu.Item name='logout' onClick={logout}>
+						<Button primary>Logout</Button>
+					</Menu.Item>
+				</Menu.Menu>
+			</Menu>
+		</Segment>
+	) : (
 		<Segment inverted size='big'>
 			<Menu inverted pointing secondary>
 				<Menu.Item
@@ -52,6 +74,8 @@ function Nav() {
 			</Menu>
 		</Segment>
 	);
+
+	return nav;
 }
 
 export default Nav;

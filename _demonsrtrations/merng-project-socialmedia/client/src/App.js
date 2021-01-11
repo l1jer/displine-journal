@@ -5,6 +5,9 @@ import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 
+import { AuthProvider } from './context/auth';
+import AuthRoute from './util/AuthRoute';
+
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -12,14 +15,21 @@ import Register from './pages/Register';
 
 function App() {
 	return (
-		<Router>
-			<Container>
-				<Nav />
-				<Route exact path='/' component={Home} />
-				<Route exact path='/login' component={Login} />
-				<Route exact path='/register' component={Register} />
-			</Container>
-		</Router>
+		<AuthProvider>
+			<Router>
+				<Container>
+					<Nav />
+					<Route exact path='/' component={Home} />
+					<AuthRoute exact path='/login' component={Login} />
+					<AuthRoute exact path='/register' component={Register} />
+					{/*
+					AuthRoute here does a thing with 
+					'<Route	{...rest} render={(props) => user ? <Redirect to='/' /> : <Component {...props} />}/>' in  './util/AuthRoute.js'
+					which disable once login then input path such as localhost:3000/register, it will redirect page to home page.
+					*/}
+				</Container>
+			</Router>
+		</AuthProvider>
 	);
 }
 

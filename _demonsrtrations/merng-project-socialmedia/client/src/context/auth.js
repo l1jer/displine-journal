@@ -1,14 +1,15 @@
 import React, { useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
 
-const initialState = {
-	user: null,
-};
+const initialState = { user: null };
 
 if (localStorage.getItem('jwtToken')) {
+	// This is for saving the token in case of losing user status by refreshing page
 	const decodedToken = jwtDecode(localStorage.getItem('jwtToken'));
 
 	if (decodedToken.exp * 1000 < Date.now()) {
+		// exp = expration
+		// unit is second, Data.now() is millisecond
 		localStorage.removeItem('jwtToken');
 	} else {
 		initialState.user = decodedToken;
@@ -40,6 +41,7 @@ function authReducer(state, action) {
 
 function AuthProvider(props) {
 	const [state, dispatch] = useReducer(authReducer, initialState);
+	// initialState makes its dynamic
 
 	function login(userData) {
 		localStorage.setItem('jwtToken', userData.token);
