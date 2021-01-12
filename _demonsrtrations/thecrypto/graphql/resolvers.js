@@ -1,102 +1,126 @@
-const { AuthenticationError, UserInputError } = require('apollo-server');
-
-const Currency = require('../models/currency');
+const Currency = require('../models/Currency');
 
 module.exports = {
 	Query: {
-		async getPosts() {
-			// Display all posts
+		// async getCurrency() {
+		// 	try {
+		// 		const coin = await Currency.find().sort({ Date: -1 }); // Descending order
+		// 		return coin;
+		// 	} catch (err) {
+		// 		throw new Error(err);
+		// 	}
+		// },
+		async getBitcoin() {
 			try {
-				const posts = await Post.find().sort({ createdAt: -1 }); // Descending order
-				return posts;
+				const bitcoin = await Currency.find({ Currency: 'bitcoin' }).sort({
+					Date: -1,
+				}); // Descending order
+				return bitcoin;
 			} catch (err) {
 				throw new Error(err);
 			}
 		},
-		async getPost(_, { postId }) {
-			// Search post by ID
+		async getTezos() {
 			try {
-				const post = await Post.findById(postId);
-				if (post) {
-					return post;
-				} else {
-					throw new Error('Post not found!');
-				}
+				const tezos = await Currency.find({ Currency: 'tezos' }).sort({
+					Date: -1,
+				}); // Descending order
+				return tezos;
 			} catch (err) {
 				throw new Error(err);
 			}
 		},
-	}, // Query ends
-	// Here can be done wrong easily, do NOT put Mutation in Query
-
-	Mutation: {
-		// --- --- createPost --- ---
-		async createPost(_, { body }, context) {
-			// Here is the context body been accessed via index.js where forward req body to context
-
-			const user = checkAuth(context);
-			// If there is no error been thrown which means this is working functionally
-			console.log(user);
-
-			const newPost = new Post({
-				body,
-				user: user.id,
-				username: user.username,
-				createdAt: new Date().toISOString(),
-			});
-
-			const post = await newPost.save();
-
-			context.pubsub.publish('NEW_POST', { newPost: post });
-
-			return post;
-		}, // createPost ends
-
-		// --- --- Deletion --- ---
-		async deletePost(_, { postId }, context) {
-			const user = checkAuth(context);
-
+		async getBnb() {
 			try {
-				const post = await Post.findById(postId);
-				if (user.username === post.username) {
-					await post.delete();
-					return 'Post deletion excuted successfully!';
-				} else {
-					throw new AuthenticationError(
-						'Post deletion cannot be done due to unknown authority!'
-					);
-				}
+				const bnb = await Currency.find({ Currency: 'bnb' }).sort({
+					Date: -1,
+				}); // Descending order
+				return bnb;
 			} catch (err) {
 				throw new Error(err);
 			}
-		}, // deletePost ends
-
-		// --- --- Like Function --- ---
-		async likePost(_, { postId }, context) {
-			const { username } = checkAuth(context);
-
-			const post = await Post.findById(postId);
-			if (post) {
-				if (post.likes.find((like) => like.username === username)) {
-					// Unlike liked post
-					post.likes = post.likes.filter((like) => like.username !== username);
-				} else {
-					// like unliked post
-					post.likes.push({
-						username,
-						createdAt: new Date().toISOString(),
-					});
-				}
-
-				await post.save();
-				return post;
-			} else throw new UserInputError('Post was not found');
-		}, // likePost Ends
-	}, // Mutation Ends
-
-	Subscription: {
-		newPost: {
-			subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'), // ??
 		},
-	}, // subscription ends
+		async getBitcoincash() {
+			try {
+				const bitcoinCash = await Currency.find({
+					Currency: 'bitcoin-cash',
+				}).sort({
+					Date: -1,
+				}); // Descending order
+				return bitcoinCash;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getCardano() {
+			try {
+				const cardano = await Currency.find({ Currency: 'cardano' }).sort({
+					Date: -1,
+				}); // Descending order
+				return cardano;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getEos() {
+			try {
+				const eos = await Currency.find({ Currency: 'eos' }).sort({
+					Date: -1,
+				}); // Descending order
+				return eos;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getEthereum() {
+			try {
+				const ethereum = await Currency.find({ Currency: 'ethereum' }).sort({
+					Date: -1,
+				}); // Descending order
+				return ethereum;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getLitecoin() {
+			try {
+				const litecoin = await Currency.find({ Currency: 'litecoin' }).sort({
+					Date: -1,
+				}); // Descending order
+				return litecoin;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getStellar() {
+			try {
+				const stellar = await Currency.find({ Currency: 'stellar' }).sort({
+					Date: -1,
+				}); // Descending order
+				return stellar;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getTether() {
+			try {
+				const tether = await Currency.find({ Currency: 'tether' }).sort({
+					Date: -1,
+				}); // Descending order
+				return tether;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+		async getXrp() {
+			try {
+				const xrp = await Currency.find({ Currency: 'xrp' }).sort({
+					Date: -1,
+				}); // Descending order
+				return xrp;
+			} catch (err) {
+				throw new Error(err);
+			}
+		},
+	},
 };

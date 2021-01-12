@@ -4,12 +4,10 @@ const mongoose = require('mongoose');
 
 // Relative imports
 const typeDefs = require('./graphql/typeDefs');
-// const resolvers = require('./graphql/resolvers');
+const resolvers = require('./graphql/resolvers');
 const { MONGODB } = require('./config');
 
 const pubsub = new PubSub();
-
-const resolvers = { Query: { sayHi: () => 'Hi' } };
 
 const server = new ApolloServer({
 	typeDefs,
