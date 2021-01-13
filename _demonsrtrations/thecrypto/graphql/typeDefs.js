@@ -16,14 +16,14 @@ module.exports = gql`
 		getXrp: [coin]
 	}
 	type coin {
-		id: ID!
+		_id: ID!
 		Currency: String!
 		Date: String!
-		Open: String!
-		High: String!
-		Low: String!
-		Close: String!
-		Volume: String!
-		MarketCap: String!
+		Open: Float!
+		High: Float!
+		Low: Float!
+		Close: Float!
+		Volume: Float!
+		MarketCap: Float!
 	}
 `;

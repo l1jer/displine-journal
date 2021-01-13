@@ -2,14 +2,6 @@ const Currency = require('../models/Currency');
 
 module.exports = {
 	Query: {
-		// async getCurrency() {
-		// 	try {
-		// 		const coin = await Currency.find().sort({ Date: -1 }); // Descending order
-		// 		return coin;
-		// 	} catch (err) {
-		// 		throw new Error(err);
-		// 	}
-		// },
 		async getBitcoin() {
 			try {
 				const bitcoin = await Currency.find({ Currency: 'bitcoin' }).sort({
