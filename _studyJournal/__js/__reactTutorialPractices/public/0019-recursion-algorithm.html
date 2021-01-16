@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    let browsers = [
+      {
+        title: "Chrome",
+        click: 15,
+      },
+      {
+        title: "Firefox",
+        click: 45,
+      },
+      {
+        title: "Opera",
+        click: 79,
+      }
+    ];
+    
+    // 递归运算 Recursion Algorithm
+    //
+    // function change(browsers, num = 100, i = 0) {
+    //   if (i == browsers.length) {
+    //     return browsers;
+    //   }
+    //   browsers[i].click += num;
+    //   return change(browsers, num, ++i);
+    // }
+    // console.table(change(browsers));
+
+    // 优秀的 Map 方法
+    browsers.map(function(item){
+        item.click+=100;
+    })
+    console.table(browsers)
+  </script>
+</html>

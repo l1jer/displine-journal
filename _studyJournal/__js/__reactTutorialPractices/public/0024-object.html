@@ -1,0 +1,70 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 函数:
+    let name = "jerry";
+    let grade = [
+      { name: "js", score: 99 },
+      { name: "html", score: 66 },
+    ];
+    function average(grade, name) {
+      let total = grade.reduce((t, l) => t + l.score, 0);
+      // 这一块没有梳理明白
+      return `${name}的平均成绩是: ${total / grade.length}`;
+    }
+    console.log(average(grade, name));
+
+    // 对象并简化内部函数
+    let user = {
+      name: "jerry",
+      grade: [
+        { name: "js", score: 99 },
+        { name: "html", score: 66 },
+      ],
+      average() {
+        let total = this.grade.reduce((t, l) => t + l.score, 0);
+        return `${this.name}的平均成绩是: ${total / this.grade.length}`;
+      },
+    };
+    console.log(user.average());
+
+    // 操作对象属性
+    let jer = {
+      "my name": "jerry",
+      name: "jerjer",
+      grade: [
+        { name: "js", score: 99 },
+        { name: "html", score: 1 },
+      ],
+    };
+    for (const key in jer) {
+      console.log(jer[key]);
+      // jerjer
+      // (2) [{…}, {…}]
+    }
+    console.log(jer["my name"]);
+    jer.age = 19;
+    jer.get = function () {
+      return `${this.name}的年龄是${this.age}`;
+    };
+    console.log(jer.get()); // jerjer的年龄是19
+    delete jer.age;
+    console.log(jer.get()); // jerjer的年龄是undefined
+
+    function upload(params) {
+      let config = {
+        type: "*.jpeg, *.bmp",
+        size: 1024,
+      };
+      config = { ...config, ...params };
+      console.log(config);
+    }
+    console.log(upload({ size: 128, type: "*.gif"  }));
+  </script>
+</html>

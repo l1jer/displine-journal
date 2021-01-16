@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+  </body>
+  <script>
+    let arr = [1, 5, 3, 9, 7];
+
+    // -- sort --
+    arr = arr.sort(function(a, b) {
+      // 负数 从小到大; 正数 从大到小.
+      return a - b; // 升序
+      return b - a; // 降序
+    });
+    console.log(arr);
+
+    let cart = [
+      { name: "Fridge", price: 299 },
+      { name: "Vacuum", price: 199 },
+      { name: "Sofa", price: 999 }
+    ];
+    cart = cart.sort(function(a, b) {
+      return a.price - b.price;
+    });
+    console.log(cart);
+
+    // -- for in --
+    // 冒泡排序: 优先把最大值放最前,
+    /*  function sort(array) {
+      for (const n in array) {
+        for (const m in array){
+        if (array[n] < array[m]) { // 此处升序, 换成大于号就是降序
+          const temp = array[n];
+          array[n] = array[m];
+          array[m] = temp;
+        }
+      }
+    }
+    return array;
+  }
+  arr = sort(arr, function(a,b){
+    return a-b;
+  });
+  console.log(arr);
+*/
+  // 使用回调函数 callback
+    function sort(array, callback) {
+      for (const n in array) {
+        for (const m in array) {
+          if (callback(array[n], array[m]) < 0) {
+            const temp = array[n];
+            array[n] = array[m];
+            array[m] = temp;
+          }
+        }
+      }
+      return array;
+    }
+    arr = sort(arr, function(a, b) {
+      return a - b;  // 升序
+    });
+    console.log(arr);
+  </script>
+</html>

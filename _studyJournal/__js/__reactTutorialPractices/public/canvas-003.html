@@ -1,0 +1,96 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Canvas绘制图形</title>
+    <!-- 矩形 三角形 笑脸 -->
+    <script type="application/javascript">
+      function draw() {
+        var canvas = document.getElementById("cvs");
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          //填充矩形
+          ctx.fillRect(25, 25, 100, 100);
+          // 矩形边框
+          ctx.clearRect(45, 45, 60, 60);
+          // 清除指定矩形区域, 使其完全透明
+          ctx.strokeRect(50, 50, 50, 50);
+
+          //实心三角形
+          ctx.beginPath();
+          ctx.moveTo(275, 150);
+          ctx.lineTo(200, 75);
+          ctx.lineTo(100, 150);
+          ctx.fill();
+
+          //空心三角形
+          ctx.beginPath();
+          ctx.moveTo(475, 150);
+          ctx.lineTo(400, 75);
+          ctx.lineTo(300, 150);
+          ctx.closePath();
+          ctx.stroke();
+
+          //绘制一张笑脸
+          ctx.beginPath();
+          /* ctx.arc(x,y, startAngle, endAngle, anticlockwise?true:false) */
+          // 画一个以(x,y)为圆心
+          // 以radius为半径的圆弧
+          // 从startAngle开始到endAngle结束
+          // 按照 anticlockwise 的方向来生成
+
+          /*
+          arcTo(x1, y1, x2, y2, radius)
+          根据给定的控制点和半径画一段圆弧, 再以直线连接两个控制点
+          !! arc()函数中表示角的单位是弧度, 不是角度, 表达式为: 弧度(radian)=(Math.PI/180)*角度
+          */
+          ctx.arc(75, 275, 50, 0, Math.PI * 2, true); // face
+          ctx.moveTo(100, 275);
+          ctx.arc(75, 275, 25, 0, Math.PI, false); // mouth
+          ctx.moveTo(65, 265);
+          ctx.arc(60, 265, 5, 0, Math.PI * 2, true); // left eye
+          ctx.moveTo(95, 265);
+          ctx.arc(90, 265, 5, 0, Math.PI * 2, true); // right eye
+          ctx.stroke();
+
+          // for循环画不同圆
+          // ctx.beginPath();
+          for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 3; j++) {
+              ctx.moveTo(550, 50);
+              ctx.beginPath();
+
+              var x = 550 + i * 50;
+              var y = 50 + j * 50;
+              var r = 20;
+              var sa = 0;
+              var ea = Math.PI + (Math.PI * j) / 2;
+              var anticlockwise = i % 2 == 0 ? true : false;
+
+              ctx.arc(x, y, r, sa, ea, anticlockwise);
+              if (i > 1) {
+                ctx.fillStyle = "grey";
+                ctx.fill();
+              } else {
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = "red";
+                ctx.stroke();
+              }
+            }
+          }
+          // 画圆结束
+        }
+      }
+    </script>
+  </head>
+  <body onload="draw();">
+    <canvas
+      id="cvs"
+      width="900"
+      height="900"
+      style="border: 1px solid #aaa; display: block; margin: 50px auto;"
+    ></canvas>
+  </body>
+</html>
