@@ -5,7 +5,6 @@ import { Grid, Transition } from 'semantic-ui-react';
 import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
 import PostForm from '../components/PostForm';
-
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function Home() {
@@ -16,7 +15,7 @@ function Home() {
 	// Otherwise data will be undefined all the time !
 	// Also, 'data: { getPosts: posts }={}' won't work.
 	// The reason is async data not ready yet here if use 'data: { getPosts: posts }'
-	console.log(data);
+	// console.log(data);
 	return (
 		<Grid columns={3}>
 			<Grid.Row className='page-title' id='block'>
