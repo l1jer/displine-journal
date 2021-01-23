@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
 
-import ApolloProvier from './ApolloServer';
+import ApolloProvider from './ApolloServer';
 
-ReactDOM.render(ApolloProvier, document.getElementById('root'));
+ReactDOM.render(ApolloProvider, document.getElementById('root'));

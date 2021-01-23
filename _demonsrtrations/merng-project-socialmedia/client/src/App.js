@@ -12,6 +12,7 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import IndividualPost from './pages/IndividualPost';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route exact path='/' component={Home} />
 					<AuthRoute exact path='/login' component={Login} />
 					<AuthRoute exact path='/register' component={Register} />
+					<Route exact path='/posts/:postId' component={IndividualPost} />
 					{/*
 					AuthRoute here does a thing with 
 					'<Route	{...rest} render={(props) => user ? <Redirect to='/' /> : <Component {...props} />}/>' in  './util/AuthRoute.js'

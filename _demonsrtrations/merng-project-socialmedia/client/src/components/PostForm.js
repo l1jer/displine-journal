@@ -15,13 +15,18 @@ function PostForm() {
 	// 'Create a post' function uses mutation
 	const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
 		variables: values,
+		// onError() {},
 		update(proxy, result) {
 			const data = proxy.readQuery({
 				query: FETCH_POSTS_QUERY,
 			});
+
 			// All the cache will stay inside of this data variable
 			data.getPosts = [result.data.createPost, ...data.getPosts];
-			proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+			proxy.writeQuery({
+				query: FETCH_POSTS_QUERY,
+				data,
+			});
 			values.body = '';
 		},
 	});
@@ -48,10 +53,11 @@ function PostForm() {
 				</Form.Field>
 			</Form>
 			{error && (
-				<div className='ui error message'>
-					<ui className='list'>
-						<li>{error.graphQLError[0].message}</li>
-					</ui>
+				<div className='ui error message' style={{ marginBottom: 20 }}>
+					<ul className='list'>
+						<li>{error.graphQLErrors[0].message}</li>
+						{/* TODO: Submit trigger here caused error */}
+					</ul>
 				</div>
 			)}
 		</>
