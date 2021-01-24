@@ -1,10 +1,10 @@
 ### Jerry Li
 
-👓 I’m currently working on a social media demo with **MERNG**(MongoDB, ExpressJS, React, NodeJS, GraphQL).
+👓 Recently completed a social media demo with **MERNG**(MongoDB, ExpressJS, React, NodeJS, GraphQL) n I currently work on my portfolio.
 
-💻 Also I'm continuesly learning more about React/Redux/NodeJS.
+💻 Also I'm continuesly learning more about React/Redux/NodeJS as keep stacking up my knowledge n experience.
 
-🎓 I’m seeking for a graduate/junior Front-end dev position.
+🎓 I’m actively seeking for a graduate/junior Front-end dev position.
 
 📩 jerry.li.adev@gmail.com
 
@@ -26,3 +26,5 @@
 ####
 
 - Material UI
+- Ant Design UI
+- Semantic UI
