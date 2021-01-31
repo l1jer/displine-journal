@@ -1,14 +1,12 @@
 ### Jerry Li
 
-👓 Recently completed a social media demo with **MERNG**(MongoDB, ExpressJS, React, NodeJS, GraphQL) n I currently work on my portfolio.
+👓 Recently completed a social media demo with **MERNG**(MongoDB, ExpressJS, React, NodeJS, GraphQL).
 
-💻 Also I'm continuesly learning more about React/Redux/NodeJS as keep stacking up my knowledge n experience.
+💻 Also I'm continuesly learning more about React/Redux/NodeJS as keep stacking up relative knowledge n experience.
 
-🎓 I’m actively seeking for a graduate/junior Front-end dev position.
+🎓 I’m actively seeking for a graduate/junior Front-end/Fullstack dev position.
 
-📩 jerry.li.adev@gmail.com
-
-⛰️ CoD 17 is my current favourite and I go to gymnasium 5 times weekly .
+⛰️ CoD 17 is my current favourite and I go to gym 5 times weekly.
 
 ##### Top Techs:
 
@@ -20,11 +18,11 @@
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=rsbb0818)
 
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
+----
+Instagram: https://www.instagram.com/jerry_li_a_dev
 
-####
+Portfolio: https://digolasforge.com/
 
-- Material UI
-- Ant Design UI
-- Semantic UI
+Behance: https://www.behance.net/jerry_li
+
+Email: jerry.li.adev@gmail.com
