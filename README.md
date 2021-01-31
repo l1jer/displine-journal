@@ -2,7 +2,7 @@
 
 👓 Recently completed a social media demo with **MERNG**(MongoDB, ExpressJS, React, NodeJS, GraphQL).
 
-💻 Also I'm continuesly learning more about React/Redux/NodeJS as keep stacking up relative knowledge n experience.
+💻 Also I continuesly learn more about React/Redux/NodeJS and create a few more demos as keep stacking up relative knowledge n experience.
 
 🎓 I’m actively seeking for a graduate/junior Front-end/Fullstack dev position.
 
